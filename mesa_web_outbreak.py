@@ -85,23 +85,48 @@ class OutbreakAgent(mesa.Agent):
 class OutbreakModel(mesa.Model):
     """
     a model with some number of agents 
+    here we are creating a model with 100 agents, 20x20 grid 
+    don't think the totalAgents variable is being used here
     """
-
-    def __init__(self, totalAgents=100, width=20, height=20):
+                    #took out totalAgents = 100 (after self,)
+    def __init__(self, totalAgents = 100, width=20, height=20):
         super().__init__()
-        self.total_agents = 100
-        self.grid = mesa.space.MultiGrid(width, height, True)
+        self.total_agents = 100 #total number of agents
+        self.grid = mesa.space.MultiGrid(width, height, True) #create a grid for agents to move around on
         self.datacollector = mesa.DataCollector(
             model_reporters={"HumanCount": human_count}, agent_reporters={"Alive": "alive"}
         )
+
+        agentStorage = [] #a list to store agents 
         #create agents 
         for i in range(self.total_agents): #create x number of agents 
             agent = OutbreakAgent(self) #create an agent
+
+            agentStorage.append(agent) #add the agent to the list 
+
+            #get total amount agents and multiply by .1 
+            #allAgents = self.agents #get total number of agents
+            #print(len(allAgents))
+            #zombieAgents = round(allAgents * .1) #10% of agents are zombies 
+            #zombieAgents.isZombie = True #set the zombie flag to true for 10% of agents
+            
 
             #add the agent to a random grid cell
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)
             self.grid.place_agent(agent, (x, y))
+
+        print(len(agentStorage)) #print the number of agents in the list
+        print("-----------------")
+        print(agentStorage) #print the list of agents
+
+        #infect 10% of agents 
+        #figure out the number that is 10% of the total agents, then go into that list and set the isZombie flag to true for x amount of agents
+        tenPercent = round(len(agentStorage) * .1) #get 10% of the total agents
+        print("10 percent of agents: ", tenPercent)
+        for i in range(tenPercent): #for 10% of the agents (range takes 1 to x amount of agents)
+            agentStorage[i].isZombie = True
+            
 
         self.running = True
 
