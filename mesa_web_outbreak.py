@@ -10,7 +10,13 @@ from mesa.visualization import SolaraViz, make_plot_component, make_space_compon
 
 #function to keep track of how many humans are left 
 def human_count(model):
-    humans_alive = 100
+    count = 0 #initialize count of humans
+    human_status = [agent.isZombie for agent in model.agents] #get the status of each agent (zombie or not)
+    if False in human_status: #if there are humans in the model
+        count = human_status.count(False) #count the number of humans in the model
+
+    return count #return the count of humans
+    
 
 #define agent 
 class OutbreakAgent(mesa.Agent):
@@ -33,8 +39,9 @@ class OutbreakAgent(mesa.Agent):
 
     def step(self): 
         self.move()
-        #figure this part out 
-        #if self is zombie, give zombie? 
+        #calling both functions, they should handle themselves out? 
+        self.give_disease()
+        self.shoot_zombie()
 
     #this function moves the agent to a new position randomly to a neighboring cell
     def move(self):
