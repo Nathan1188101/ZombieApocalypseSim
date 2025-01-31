@@ -42,11 +42,14 @@ class OutbreakAgent(mesa.Agent):
         #calling both functions, they should handle themselves out? 
         self.give_disease()
         self.shoot_zombie()
+
+    def dont_move(self):
+        #if agent is dead, keep the agent in the same spot
         if self.dead == True:
-            #get the cell the agent is in
-            deathSpot = self.pos
-            #keep the agent in the same spot
-            self.model.grid.move_agent(self, deathSpot)
+            #get the cell the agent died in
+            death_spot = self.pos 
+            #keep the agent in the same spot 
+            self.model.grid.move_agent(self, death_spot)
 
     #this function moves the agent to a new position randomly to a neighboring cell
     def move(self):
