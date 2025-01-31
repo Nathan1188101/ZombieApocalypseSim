@@ -9,7 +9,8 @@ from mesa.visualization import SolaraViz, make_plot_component, make_space_compon
 
 
 #function to keep track of how many humans are left 
-
+def human_count(model):
+    humans_alive = 100
 
 #define agent 
 class OutbreakAgent(mesa.Agent):
@@ -77,8 +78,89 @@ class OutbreakAgent(mesa.Agent):
                         other.dead = True #set the zombie to dead 
                         self.shots_left -= 1; 
                     else:
-                        self.shots_left -= 1; 
+                        self.shots_left -= 1; #decrement shots 
 
         
+#define simulation 
+class OutbreakModel(mesa.Model):
+    """
+    a model with some number of agents 
+    """
+
+    def __init__(self, totalAgents=100, width=20, height=20):
+        super().__init__()
+        self.total_agents = 100
+        self.grid = mesa.MultiGrid(width, height, True)
+        self.datacollector = mesa.DataCollector(
+            model_reporters={"HumanCount": human_count}, agent_reporters={"Alive": "alive"}
+        )
+        #create agents 
+        for i in range(self.total_agents): #create x number of agents 
+            agent = OutbreakAgent(self) #create an agent
+
+            #add the agent to a random grid cell
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height)
+            self.grid.place_agent(agent, (x, y))
+
+        self.running = True
+
+    def step(self):
+        """Advance the model by one step"""
+        self.datacollector.collect(self)
+        self.agents.shuffle_do("step")
+
+#model parameters for gui 
+model_params = {
+    "totalAgents": {
+        "type": "SliderInt",
+        "value": 50,
+        "label": "Number of agents:",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+    },
+    "width": {
+        "type": "SliderInt",
+        "value": 20,
+        "label": "Width:",
+        "min": 10,
+        "max": 100,
+        "step": 10,
+    },
+    "height": {
+        "type": "SliderInt",
+        "value": 20,
+        "label": "Height:",
+        "min": 10,
+        "max": 100,
+        "step": 10,
+    },
+}
+
+def agent_portrayal(agent):
+    size = 10
+    color = "tab:blue" #human
+
+    if agent.isZombie == True:
+        color = "tab:red" #zombie
+    if agent.dead == True:
+        color = "tab:black" #dead zombie 
+    return {"size": size, "color": color}   
+
+#create and run the simulation
+outbreak_model = OutbreakModel(100, 20, 20) #initializes model, 100 agents, 20x20 grid
+
+SpaceGraph = make_space_component(agent_portrayal) #creates a space to display agents 
+HumanCountPlot=make_plot_component("HumanCount") #this creates a plot to keep track of the Gini coefficient 
 
 
+#generates the interactive web page
+page = SolaraViz(
+    outbreak_model,
+    components=[SpaceGraph, HumanCountPlot],
+    model_params=model_params,
+    name="Outbreak Model"
+)
+# This is required to render the visualization in the Jupyter notebook
+page
