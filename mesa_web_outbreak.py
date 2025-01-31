@@ -90,7 +90,7 @@ class OutbreakModel(mesa.Model):
     def __init__(self, totalAgents=100, width=20, height=20):
         super().__init__()
         self.total_agents = 100
-        self.grid = mesa.MultiGrid(width, height, True)
+        self.grid = mesa.space.MultiGrid(width, height, True)
         self.datacollector = mesa.DataCollector(
             model_reporters={"HumanCount": human_count}, agent_reporters={"Alive": "alive"}
         )
