@@ -70,12 +70,19 @@ class OutbreakAgent(mesa.Agent):
         """
         if agent is a zombie, and it lands on the same cell as a non zombie agent
         turn one random other non zombie agent into a zombie 
+        zombies have a 50% chance of dropping some ammo to humans
         """
         cellmates = self.model.grid.get_cell_list_contents([self.pos]) #getting the agents in the same cell 
         if (len(cellmates) > 1 and self.isZombie == True): #if there are other agents in the cell and self is a zombie
             other = self.random.choice(cellmates) #randomly choose another agent
             if(other.isZombie == False): #if the randomly chosen agent is not a zombie
                 other.isZombie = True #set the other agent to be a zombie
+
+            ammoDrop = self.random.choice(cellmates) #randomly choose another agent to drop ammo (will choose same agent if only one agent in cell I think)
+            if(ammoDrop.isZombie == False):
+                ammoDrop.shots_left += 2 #add 2 shots to the agent that drops the ammo (will play around with this number)
+
+            
 
     #function to shoot zombie 
     def shoot_zombie(self):
