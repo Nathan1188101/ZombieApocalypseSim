@@ -175,9 +175,10 @@ def agent_portrayal(agent):
     color = "tab:blue" #human
 
     if agent.isZombie == True:
+        size = 50
         color = "tab:red" #zombie
     if agent.dead == True:
-        color = "tab:black" #dead zombie 
+        color = "black" #dead zombie 
     return {"size": size, "color": color}   
 
 #create and run the simulation
