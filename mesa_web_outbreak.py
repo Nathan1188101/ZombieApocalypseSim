@@ -38,21 +38,25 @@ class OutbreakAgent(mesa.Agent):
         self.dead = False 
 
     def step(self): 
-        self.move()
-        #calling both functions, they should handle themselves out? 
-        self.give_disease()
-        self.shoot_zombie()
-
-    def dont_move(self):
-        #if agent is dead, keep the agent in the same spot
+        """agent behavior each step"""
         if self.dead == True:
-            #get the cell the agent died in
-            death_spot = self.pos 
-            #keep the agent in the same spot 
-            self.model.grid.move_agent(self, death_spot)
+            return #do nothing if agent is dead 
+        
+        if self.isZombie == True: #if agent is a zombie
+            self.move() #move the agent
+            self.give_disease() #give disease to other agents in the same cell
+        else: #other wise agent is human
+            self.move() #move the agent
+            self.shoot_zombie() #shoot a zombie if there is one in the same cell
+
+        #self.move()
+        #calling both functions, they should handle themselves out? 
+        #self.give_disease()
+        #self.shoot_zombie()
 
     #this function moves the agent to a new position randomly to a neighboring cell
     def move(self):
+        """could also handle movement if alive in here possibly"""
         possible_steps = self.model.grid.get_neighborhood(
             self.pos,
             moore=True,
