@@ -100,7 +100,7 @@ class MoneyModel(mesa.Model):
         # Create agents
         for i in range(self.total_agents):
             agent = MoneyAgent(self)
-
+            
             # Add the agent to a random grid cell
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)

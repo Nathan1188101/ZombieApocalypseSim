@@ -7,6 +7,15 @@ import matplotlib.pyplot as plt #data visualization
 from mesa.datacollection import DataCollector #collect data from model 
 from mesa.visualization import SolaraViz, make_plot_component, make_space_component #creates a web-based visualization of the model
 
+"""
+Ideas for 2 small features: 
+
+ - random chance of picking up 1 bullet each step (small chance)
+ - random chance of picking up a "power up" in a random cell that will give human 100% chance of killing next zombie 
+ - 
+
+
+"""
 
 #function to keep track of how many humans are left 
 def human_count(model):
