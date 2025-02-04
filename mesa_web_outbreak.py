@@ -12,7 +12,8 @@ Ideas for 2 small features:
 
  - random chance of picking up 1 bullet each step (small chance)
  - random chance of picking up a "power up" in a random cell that will give human 100% chance of killing next zombie 
- - 
+ - day night cycle? zombies move slower during day and faster at night. 
+ - after certain amount of time, more humans get added as reinforcements
 
 
 """
@@ -74,24 +75,31 @@ class OutbreakAgent(mesa.Agent):
         new_position = self.random.choice(possible_steps) #randomly choose a new position from the possible steps
         self.model.grid.move_agent(self, new_position) #move the agent to the new position
 
-    #function to give disease 
+    #function to give disease, also 50% chance of dropping ammo to humans 
     def give_disease(self):
         """
         if agent is a zombie, and it lands on the same cell as a non zombie agent
         turn one random other non zombie agent into a zombie 
         zombies have a 50% chance of dropping some ammo to humans
         """
+        
         cellmates = self.model.grid.get_cell_list_contents([self.pos]) #getting the agents in the same cell 
+
         if (len(cellmates) > 1 and self.isZombie == True): #if there are other agents in the cell and self is a zombie
-            other = self.random.choice(cellmates) #randomly choose another agent
+            humans = [agent for agent in cellmates if agent.isZombie == False] #get the humans in the cell
+            other = self.random.choice(humans) #randomly choose another agent from the human list 
             if(other.isZombie == False): #if the randomly chosen agent is not a zombie
                 other.isZombie = True #set the other agent to be a zombie
 
-            ammoDrop = self.random.choice(cellmates) #randomly choose another agent to drop ammo (will choose same agent if only one agent in cell I think)
-            if(ammoDrop.isZombie == False):
-                ammoDrop.shots_left += 2 #add 2 shots to the agent that drops the ammo (will play around with this number)
+            drop = self.random.choice([True, False]) #50/50 chance of dropping ammo
+            if(drop == True):
+                #make sure we are only targeting humans to randomly choose to drop too instead of also considering zombies in the check
+                humans = [agent for agent in cellmates if agent.isZombie == False] #get the humans in the cell
+                if (humans): #if there are humans in the cell
+                    ammoDrop = self.random.choice(humans) #randomly choose another agent to drop ammo (will choose same agent if only one agent in cell I think)
+                    ammoDrop.shots_left += 2 #add 2 shots to the agent that drops the ammo (will play around with this number)
 
-            
+
 
     #function to shoot zombie 
     def shoot_zombie(self):
@@ -114,6 +122,13 @@ class OutbreakAgent(mesa.Agent):
                         self.shots_left -= 1; 
                     else:
                         self.shots_left -= 1; #decrement shots 
+    
+    #small but interesting feature to add later
+    def random_ammo(self):
+        """
+        25% chance of picking up ammo each step
+        """
+
 
         
 #define simulation 
