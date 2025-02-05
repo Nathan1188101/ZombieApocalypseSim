@@ -83,9 +83,9 @@ class OutbreakAgent(mesa.Agent):
 
         if (len(cellmates) > 1 and self.isZombie == True): #if there are other agents in the cell and self is a zombie
             humans = [agent for agent in cellmates if agent.isZombie == False] #get the humans in the cell (filter out zombies)
-            other = self.random.choice(humans) #randomly choose another agent from the human list 
-            #if(other.isZombie == False): #if the randomly chosen agent is not a zombie
-            other.isZombie = True #set the other agent to be a zombie
+            if(humans):
+                other = self.random.choice(humans) #randomly choose another agent from the human list 
+                other.isZombie = True #set the other agent to be a zombie
 
             drop = self.random.choice([True, False]) #50/50 chance of dropping ammo
             if(drop == True):
@@ -113,10 +113,9 @@ class OutbreakAgent(mesa.Agent):
         if(len(cellmates) > 1 and self.isZombie == False): #if other agents present and self is human 
             #filter the cellmates list to be living zombies 
             targets = [agent for agent in cellmates if agent.isZombie == True and agent.dead == False] #get the zombies in the cell that are not dead
-            other = self.random.choice(targets) #randomly choose from the list of targets
-
             #if there are zombies in the cell and the human has shots left
             if (targets and self.shots_left > 0):
+                other = self.random.choice(targets) #randomly choose from the list of targets
                 shot = self.random.choice([True, False]) #50/50 chance of shooting zombie
                 if (shot == True):
                     other.dead = True #set the zombie to dead
