@@ -55,14 +55,10 @@ class OutbreakAgent(mesa.Agent):
         if self.isZombie == True: #if agent is a zombie
             self.move() #move the agent
             self.give_disease() #give disease to other agents in the same cell
-        else: #other wise agent is human
+        else: # if human 
             self.move() #move the agent
             self.shoot_zombie() #shoot a zombie if there is one in the same cell
-
-        #self.move()
-        #calling both functions, they should handle themselves out? 
-        #self.give_disease()
-        #self.shoot_zombie()
+            self.random_ammo() #random chance of picking up ammo each step
 
     #this function moves the agent to a new position randomly to a neighboring cell
     def move(self):
@@ -110,7 +106,7 @@ class OutbreakAgent(mesa.Agent):
         dead zombie can no longer move or infect other human agents 
 
         I interpreted the instructions to be that the human is always going to shoot, but the chance of killing the target is 50/50. 
-        Rather than the human having a 50% chance of pulling the trigger. 
+        Rather than the human having a 50% chance of pulling the trigger. Overall meaning the human will always lose ammo.
         """
         cellmates = self.model.grid.get_cell_list_contents([self.pos]) #getting agents in cell 
 
@@ -148,6 +144,9 @@ class OutbreakAgent(mesa.Agent):
         """
         25% chance of picking up ammo each step
         """
+        pickup = self.random.choice([True, False, False, False]) #25% chance of picking up ammo
+        if(pickup == True):
+            self.shots_left += 1 #add 1 to shot to ammo 
 
 
         
