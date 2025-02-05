@@ -13,6 +13,9 @@ Features Added:
     - added a 25% chance for humans to pick up ammo each step 
     - if the humans live for 100 steps of the simulation, reinforcements are added to the model (50 more humans)
 
+    reinforcements() 
+    random_ammo()
+
 """
 
 #function to keep track of how many humans are left 
@@ -204,25 +207,16 @@ class OutbreakModel(mesa.Model):
         """
         add more humans to the model after a certain amount of steps 
         note to self: remember since we are inside the model class, "self" refers to the model itself 
-
-        #get_all_cell_contents() doesn't work with multi grid, so we need to use another method to get all agents,
-        will iterate through all the cells in the grid and get the agents that remain 
         """
-        #get list of all living agents 
-        #agents = [] #list for agents 
-        #for pos, contents in self.grid.coord_iter():
-            #contents = self.grid.get_cell_list_contents(cell) #get the agents in the cell
-            #for agent in contents: #for each agent in the cell
-                #agents.append(agent) #add the agents to the list
-                #print("agent", agent) #debugging
 
-        #humans = [agent for agent in agents if agent.isZombie == False] #get all humans in the model
+        #any returns a bool, so we can use this to detect when there are no more agents in the model 
+        humans_alive = any(agent.isZombie == False for agent in self.agents) #check if there are any humans alive in the model
+        print("Humans alive: ", humans_alive) #debugging
+        
 
-        #if there are humans still alive after 100 steps 
-        #if(len(humans) > 0 and self.counter == 100):
-        if(self.counter == 20):
+        if(humans_alive and self.counter == 50):
             #add 50 more humans to the model 
-            for i in range(50):
+            for i in range(100):
                 agent = OutbreakAgent(self) #create an agent 
                 x = self.random.randrange(self.grid.width) #get a random x position
                 y = self.random.randrange(self.grid.height) #get a random y position
@@ -274,7 +268,6 @@ outbreak_model = OutbreakModel(100, 20, 20) #initializes model, 100 agents, 20x2
 
 SpaceGraph = make_space_component(agent_portrayal) #creates a space to display agents 
 HumanCountPlot=make_plot_component("HumanCount") #this creates a plot to keep track of the Gini coefficient 
-
 
 #generates the interactive web page
 page = SolaraViz(
