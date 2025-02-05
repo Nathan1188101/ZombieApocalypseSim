@@ -8,13 +8,10 @@ from mesa.datacollection import DataCollector #collect data from model
 from mesa.visualization import SolaraViz, make_plot_component, make_space_component #creates a web-based visualization of the model
 
 """
-Ideas for 2 small features: 
+Features Added: 
 
- - random chance of picking up 1 bullet each step (small chance)
- - random chance of picking up a "power up" in a random cell that will give human 100% chance of killing next zombie 
- - day night cycle? zombies move slower during day and faster at night. 
- - after certain amount of time, more humans get added as reinforcements
-
+    - added a 25% chance for humans to pick up ammo each step 
+    - if the humans live for 100 steps of the simulation, reinforcements are added to the model (50 more humans)
 
 """
 
@@ -46,7 +43,7 @@ class OutbreakAgent(mesa.Agent):
         self.isZombie = False #set this to true for a random 10% of agents later? 
         self.shots_left = 15 
         self.dead = False 
-
+    
     def step(self): 
         """agent behavior each step"""
         if self.dead == True:
@@ -59,6 +56,7 @@ class OutbreakAgent(mesa.Agent):
             self.move() #move the agent
             self.shoot_zombie() #shoot a zombie if there is one in the same cell
             self.random_ammo() #random chance of picking up ammo each step
+
 
     #this function moves the agent to a new position randomly to a neighboring cell
     def move(self):
@@ -156,7 +154,9 @@ class OutbreakModel(mesa.Model):
     here we are creating a model with 100 agents, 20x20 grid 
     don't think the totalAgents variable is being used here
     """
-                    #took out totalAgents = 100 (after self,)
+
+    counter = 0 #initialize counter for steps (for second feature)
+
     def __init__(self, totalAgents = 100, width=20, height=20):
         super().__init__()
         self.total_agents = 100 #total number of agents
@@ -171,14 +171,7 @@ class OutbreakModel(mesa.Model):
             agent = OutbreakAgent(self) #create an agent
 
             agentStorage.append(agent) #add the agent to the list 
-
-            #get total amount agents and multiply by .1 
-            #allAgents = self.agents #get total number of agents
-            #print(len(allAgents))
-            #zombieAgents = round(allAgents * .1) #10% of agents are zombies 
-            #zombieAgents.isZombie = True #set the zombie flag to true for 10% of agents
             
-
             #add the agent to a random grid cell
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)
@@ -202,6 +195,40 @@ class OutbreakModel(mesa.Model):
         """Advance the model by one step"""
         self.datacollector.collect(self)
         self.agents.shuffle_do("step")
+        self.counter += 1 #increment step counter (for second feature)
+        print("Step: ", self.counter) #debugging 
+        self.reinforcements() #add more humans to the model after a certain amount of steps
+
+    #second feature added
+    def reinforcements(self):
+        """
+        add more humans to the model after a certain amount of steps 
+        note to self: remember since we are inside the model class, "self" refers to the model itself 
+
+        #get_all_cell_contents() doesn't work with multi grid, so we need to use another method to get all agents,
+        will iterate through all the cells in the grid and get the agents that remain 
+        """
+        #get list of all living agents 
+        #agents = [] #list for agents 
+        #for pos, contents in self.grid.coord_iter():
+            #contents = self.grid.get_cell_list_contents(cell) #get the agents in the cell
+            #for agent in contents: #for each agent in the cell
+                #agents.append(agent) #add the agents to the list
+                #print("agent", agent) #debugging
+
+        #humans = [agent for agent in agents if agent.isZombie == False] #get all humans in the model
+
+        #if there are humans still alive after 100 steps 
+        #if(len(humans) > 0 and self.counter == 100):
+        if(self.counter == 20):
+            #add 50 more humans to the model 
+            for i in range(50):
+                agent = OutbreakAgent(self) #create an agent 
+                x = self.random.randrange(self.grid.width) #get a random x position
+                y = self.random.randrange(self.grid.height) #get a random y position
+                self.grid.place_agent(agent, (x, y)) #place the agent on the grid at the random position
+
+        
 
 #model parameters for gui 
 model_params = {
