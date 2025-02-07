@@ -11,7 +11,7 @@ from mesa.visualization import SolaraViz, make_plot_component, make_space_compon
 Features Added: 
 
     - added a 25% chance for humans to pick up ammo each step 
-    - if the humans live for 100 steps of the simulation, reinforcements are added to the model (50 more humans)
+    - if the humans live for 100 steps of the simulation, reinforcements are added to the model (100 more humans)
 
     reinforcements() 
     random_ammo()
@@ -90,7 +90,7 @@ class OutbreakAgent(mesa.Agent):
 
             drop = self.random.choice([True, False]) #50/50 chance of dropping ammo
             if(drop == True):
-                #make sure we are only targeting humans to randomly choose to drop too instead of also considering zombies in the check
+                #make sure we are only targeting humans to randomly choose to drop to instead of also considering zombies in the check
                 humans = [agent for agent in cellmates if agent.isZombie == False] #get the humans in the cell
                 if (humans): #if there are humans in the cell
                     ammoDrop = self.random.choice(humans) #randomly choose another agent to drop ammo (will choose same agent if only one agent in cell I think)
@@ -122,7 +122,7 @@ class OutbreakAgent(mesa.Agent):
                     other.dead = True #set the zombie to dead
                     self.shots_left -= 1 #decrement shots
                     print(f"Agent: {self.unique_id} shot a zombie") #debugging
-                    with open("sim_log.txt", "a") as file: 
+                    with open("sim_log.txt", "a") as file:  #logging this info in the sim log file
                         log = f"Agent: {self.unique_id} shot a zombie \n" 
                         file.write(log) #write to the file
                 else:

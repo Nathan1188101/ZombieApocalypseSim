@@ -1,0 +1,254 @@
+Agent: 76 shot a zombie 
+Agent: 41 shot a zombie 
+Step:  1 Humans alive: True 
+Step:  2 Humans alive: True 
+Agent: 62 shot a zombie 
+Step:  3 Humans alive: True 
+Step:  4 Humans alive: True 
+Step:  5 Humans alive: True 
+Agent: 21 shot a zombie 
+Agent: 78 shot a zombie 
+Step:  6 Humans alive: True 
+Agent: 42 shot a zombie 
+Step:  7 Humans alive: True 
+Agent: 13 shot a zombie 
+Agent: 22 shot a zombie 
+Step:  8 Humans alive: True 
+Agent: 65 shot a zombie 
+Step:  9 Humans alive: True 
+Agent: 65 shot a zombie 
+Step:  10 Humans alive: True 
+Step:  11 Humans alive: True 
+Agent: 92 shot a zombie 
+Step:  12 Humans alive: True 
+Step:  13 Humans alive: True 
+Agent: 73 shot a zombie 
+Step:  14 Humans alive: True 
+Agent: 73 shot a zombie 
+Step:  15 Humans alive: True 
+Step:  16 Humans alive: True 
+Agent: 13 shot a zombie 
+Step:  17 Humans alive: True 
+Step:  18 Humans alive: True 
+Agent: 50 shot a zombie 
+Agent: 89 shot a zombie 
+Agent: 39 shot a zombie 
+Agent: 100 shot a zombie 
+Step:  19 Humans alive: True 
+Agent: 100 shot a zombie 
+Step:  20 Humans alive: True 
+Agent: 49 shot a zombie 
+Step:  21 Humans alive: True 
+Agent: 91 shot a zombie 
+Step:  22 Humans alive: True 
+Step:  23 Humans alive: True 
+Agent: 31 shot a zombie 
+Agent: 27 shot a zombie 
+Step:  24 Humans alive: True 
+Step:  25 Humans alive: True 
+Step:  26 Humans alive: True 
+Agent: 22 shot a zombie 
+Agent: 39 shot a zombie 
+Step:  27 Humans alive: True 
+Agent: 82 shot a zombie 
+Agent: 89 shot a zombie 
+Step:  28 Humans alive: True 
+Agent: 79 shot a zombie 
+Step:  29 Humans alive: True 
+Agent: 54 shot a zombie 
+Agent: 70 shot a zombie 
+Step:  30 Humans alive: True 
+Agent: 89 shot a zombie 
+Agent: 85 shot a zombie 
+Step:  31 Humans alive: True 
+Agent: 42 shot a zombie 
+Step:  32 Humans alive: True 
+Step:  33 Humans alive: True 
+Step:  34 Humans alive: True 
+Step:  35 Humans alive: True 
+Step:  36 Humans alive: True 
+Agent: 31 shot a zombie 
+Step:  37 Humans alive: True 
+Agent: 96 shot a zombie 
+Step:  38 Humans alive: True 
+Agent: 79 shot a zombie 
+Step:  39 Humans alive: True 
+Agent: 85 shot a zombie 
+Step:  40 Humans alive: True 
+Step:  41 Humans alive: True 
+Step:  42 Humans alive: True 
+Agent: 80 shot a zombie 
+Step:  43 Humans alive: True 
+Step:  44 Humans alive: True 
+Agent: 79 shot a zombie 
+Step:  45 Humans alive: True 
+Agent: 94 shot a zombie 
+Step:  46 Humans alive: True 
+Step:  47 Humans alive: True 
+Step:  48 Humans alive: True 
+Step:  49 Humans alive: True 
+Step:  50 Humans alive: True 
+Agent: 163 shot a zombie 
+Agent: 135 shot a zombie 
+Agent: 174 shot a zombie 
+Agent: 172 shot a zombie 
+Agent: 160 shot a zombie 
+Agent: 194 shot a zombie 
+Agent: 148 shot a zombie 
+Agent: 150 shot a zombie 
+Agent: 173 shot a zombie 
+Agent: 96 shot a zombie 
+Step:  51 Humans alive: True 
+Agent: 155 shot a zombie 
+Agent: 179 shot a zombie 
+Agent: 198 shot a zombie 
+Step:  52 Humans alive: True 
+Agent: 180 shot a zombie 
+Agent: 187 shot a zombie 
+Agent: 188 shot a zombie 
+Agent: 190 shot a zombie 
+Step:  53 Humans alive: True 
+Agent: 131 shot a zombie 
+Agent: 165 shot a zombie 
+Agent: 125 shot a zombie 
+Agent: 184 shot a zombie 
+Agent: 134 shot a zombie 
+Step:  54 Humans alive: True 
+Agent: 171 shot a zombie 
+Agent: 125 shot a zombie 
+Agent: 110 shot a zombie 
+Agent: 150 shot a zombie 
+Step:  55 Humans alive: True 
+Agent: 143 shot a zombie 
+Agent: 159 shot a zombie 
+Agent: 197 shot a zombie 
+Agent: 134 shot a zombie 
+Step:  56 Humans alive: True 
+Agent: 129 shot a zombie 
+Agent: 134 shot a zombie 
+Step:  57 Humans alive: True 
+Agent: 175 shot a zombie 
+Agent: 152 shot a zombie 
+Step:  58 Humans alive: True 
+Step:  59 Humans alive: True 
+Agent: 116 shot a zombie 
+Agent: 106 shot a zombie 
+Agent: 172 shot a zombie 
+Step:  60 Humans alive: True 
+Agent: 175 shot a zombie 
+Step:  61 Humans alive: True 
+Agent: 118 shot a zombie 
+Step:  62 Humans alive: True 
+Step:  63 Humans alive: True 
+Agent: 168 shot a zombie 
+Step:  64 Humans alive: True 
+Agent: 190 shot a zombie 
+Step:  65 Humans alive: True 
+Step:  66 Humans alive: True 
+Step:  67 Humans alive: True 
+Step:  68 Humans alive: True 
+Step:  69 Humans alive: True 
+Agent: 119 shot a zombie 
+Step:  70 Humans alive: True 
+Step:  71 Humans alive: True 
+Step:  72 Humans alive: True 
+Agent: 159 shot a zombie 
+Agent: 181 shot a zombie 
+Step:  73 Humans alive: True 
+Step:  74 Humans alive: True 
+Step:  75 Humans alive: True 
+Agent: 159 shot a zombie 
+Step:  76 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  77 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  78 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  79 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  80 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  81 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  82 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  83 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  84 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  85 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  86 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  87 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  88 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  89 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  90 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  91 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  92 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  93 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  94 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  95 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  96 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  97 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  98 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  99 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  100 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  101 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  102 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  103 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  104 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  105 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  106 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  107 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  108 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  109 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  110 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  111 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  112 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  113 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  114 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  115 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  116 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  117 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  118 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  119 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  120 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  121 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
+Step:  122 Humans alive: False 
+ZOMBIES HAVE TAKEN OVER THE WORLD 
