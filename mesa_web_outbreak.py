@@ -121,6 +121,10 @@ class OutbreakAgent(mesa.Agent):
                 if (shot == True):
                     other.dead = True #set the zombie to dead
                     self.shots_left -= 1 #decrement shots
+                    print(f"Agent: {self.unique_id} shot a zombie") #debugging
+                    with open("sim_log.txt", "a") as file: 
+                        log = f"Agent: {self.unique_id} shot a zombie \n" 
+                        file.write(log) #write to the file
                 else:
                     self.shots_left -= 1 #decrement shots
             
@@ -209,13 +213,25 @@ class OutbreakModel(mesa.Model):
         note to self: remember since we are inside the model class, "self" refers to the model itself 
         """
 
-        #any returns a bool, so we can use this to detect when there are no more agents in the model 
-        humans_alive = any(agent.isZombie == False for agent in self.agents) #check if there are any humans alive in the model
-        print("Humans alive: ", humans_alive) #debugging
+        #open a file to write to
+        with open("sim_log.txt", "a") as file: 
+            #any returns a bool, so we can use this to detect when there are no more agents in the model 
+            humans_alive = any(agent.isZombie == False for agent in self.agents) #check if there are any humans alive in the model
+            
+            log = f"Step:  {self.counter} Humans alive: {humans_alive} \n" 
+
+            print("Humans alive: ", humans_alive) #debugging
+
+            file.write(log) #write to the file
+
+            if(humans_alive == False):
+                print("All humans are dead")
+                file.write("ZOMBIES HAVE TAKEN OVER THE WORLD \n") #write to the file
+                #self.running = False #stop the simulation
         
 
         if(humans_alive and self.counter == 50):
-            #add 50 more humans to the model 
+            #add 100 more humans to the model 
             for i in range(100):
                 agent = OutbreakAgent(self) #create an agent 
                 x = self.random.randrange(self.grid.width) #get a random x position
